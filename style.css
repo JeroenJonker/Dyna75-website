@@ -4,11 +4,19 @@ Author: Jeroen
 Version: 1.0
 */
 
+html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 body {
     font-family: sans-serif;
-    color: darkred;
     position: relative;
-    background-color: lightgray;
+    background: lightgray; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#F3F3F3, #C6C6C6); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F3F3F3, #C6C6C6); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F3F3F3, #C6C6C6); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F3F3F3, #C6C6C6); /* Standard syntax */
+    margin: 0;
 }
 
 a:link, a:visited {
@@ -24,43 +32,41 @@ p {
 div.container {
     max-width: 920px;
     margin: 0px auto;
-    padding-left: 20px;
-    padding-right: 20px;
 } 
 
 article.post {
     background-color: white;
+    box-shadow: 0px 0px 6px  #888888;
+    -webkit-box-shadow: 0px 0px 6px  #888888;
+    -moz-box-shadow: 0px 0px 6px  #888888;
+    -o-box-shadow: 0px 0px 6px  #888888;
    /* margin-bottom: auto;
     padding-top: auto;
     padding-bottom: auto; */
 }
 
-article.post:first-of-type {
-    margin-top: 100px;
-}
 
 /* Header */
-.site-header-blok {
-    top:0%;
-    background-color: lightgray;;
-    margin-left: -8px;
-    height: 60px;
-    width: 100%;
-    position: fixed;
-}
-
 .site-header {
     /*border-bottom: 2px solid #999; */
-    width: 100%;
+    width: 85%;
     height: 43px;
     background-color: #D11416; /*E80C0C*/
-    padding-left: 200px;
-    margin-top: 30px;
+    padding-left: 15%;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 /* Footer */
 .site-footer {
-    margin-top: 30px;
+    clear: both;
+    color: #a7a7a7;
+    background-color: #1e1e1e;
+    width: 100%;
+    padding: 1px 0 1px 5%;
+    margin-top: 30px; 
+    box-sizing: border-box;
+    bottom: -1px;
 }
 
 /*Navigation Menu's */
@@ -82,6 +88,7 @@ article.post:first-of-type {
 .site-header nav ul li {
     margin-right: 5px;
     font-size: 20px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .site-header nav ul li a:link,
@@ -106,25 +113,18 @@ article.post:first-of-type {
 }
 
 .site-header nav ul li.current-menu-item a:link,
-.site-header nav ul li.current-menu-item a:visited{
+.site-header nav ul li.current-menu-item a:visited,
+.site-header nav ul li.current-page-ancestor a:link,
+.site-header nav ul li.current-page-ancestor a:visited{
     background-color: white;
     color: black;
     border-bottom: none;
     border-top: none;
     margin-top: 0px;
+    text-shadow: none;
 }
 
 /* Footer Menu */
-.footer-box {
-    color: #a7a7a7;
-    background-color: #1e1e1e;
-    margin-left: -8px;
-    margin-right: -8px;
-    padding-left: 5%;
-    padding-bottom: 1px;
-    padding-top: 1px;
-}
-
 .site-footer nav ul li{
     border: none;
 }
@@ -139,12 +139,13 @@ article.post:first-of-type {
 }
 
 .site-footer p {
-    padding-left: 5%;
+    padding-left: 4px;
 }
 
 /*page layout, van de header navigatie */
 article.page {
     padding-left: 15px;
+    padding-right: 15px;
     padding-top: 0.5px;
     line-height: 15px;
     padding-bottom: 15px
@@ -152,17 +153,30 @@ article.page {
 
 article h2 {
     padding-top: 4px;
-    font-size: 250%;
-    line-height: 1em;
+    font-size: 210%;
+    line-height: 0.8em;
+    font-family: 'Hind', sans-serif;
 }
 
-article.agenda {
+article#hoofdnieuws h2 {
+    height: 310px;
+    color: white;
+    text-shadow: 1.5px 1.5px 0.5px rgba(0, 0, 0, 0.5);
+    padding-left: 5%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+article.announcement {
     font-size: 20px;
-    color: red;
+    display: inline-block;
+    margin: 0px 0px 4% 0px;
+    border-radius: 0px 0px 30px 30px;
 }
 
 article#hoofdnieuws {
     font-size: 30px;
+    color: white;
 }
 
 img {
@@ -170,13 +184,509 @@ img {
     height: auto;
 }
 
-.has-thumbnail {
-    position: relative;
-    padding-left: 200px;
+article.auto {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0px 4% 4% 0px;
+    width: 70%;
+    border-radius: 0px 0px 30px 30px;
+}
+.right-column {
+    float: right;
+    max-width: 25%;
 }
 
-.post-thumbnail {
+.footer-box {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 10%;
+}
+
+.footer-box > p > a:link, .footer-box p a:visited {
+    color: #a7a7a7;
+    text-decoration: underline; 
+}
+
+.primary-mobile-nav {
+    display: none;
+}
+
+.logo {
+    width: 175px;
+    height: auto;
+    margin-top: 5px;
+    margin-left: 10%;
+    margin-bottom: 5px;
+}
+
+article.announcement h2{
+    text-align: center;
+}
+
+.content {
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 18px;
+    padding-bottom: 8px;
+}
+
+.social-buttons {
+    float: right;
+    margin-top: 60px;
+    margin-right: 80px;
+}
+
+/*------------------------------------*\
+    $CAROUSEL Hoofdnieuws
+\*------------------------------------*/
+  .carousel{
+    overflow:hidden;
+    width:100%;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+.panes{
+    list-style:none;
+    position:relative;
+    width:500%; /* Number of panes * 100% */
+    overflow:hidden; /* This is used solely to clear floats, it does not add functionality. */
+        
+    -moz-animation:carousel 30s infinite;
+    -webkit-animation:carousel 30s infinite;
+    animation:carousel 30s infinite;
+    
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.panes > li{
+    position:relative;
+    float:left;
+    width:20%; /* 100 / number of panes */
+}
+
+@keyframes carousel{
+    0%    { left:0; }
+    11%   { left:0; }
+    12.5% { left:-100%; }
+    23.5% { left:-100%; }
+    25%   { left:-200%; }
+    36%   { left:-200%; }
+    37.5% { left:-300%; }
+    48.5% { left:-300%; }
+    50%   { left:-400%; }
+    61%   { left:-400%; }
+    62.5% { left:-300%; }
+    73.5% { left:-300%; }
+    75%   { left:-200%; }
+    86%   { left:-200%; }
+    87.5% { left:-100%; }
+    98.5% { left:-100%; }
+    100%  { left:0; }
+} 
+/*------------------------------------*\
+    $CAROUSEL Sponsor
+\*------------------------------------*/
+.panest{
+    list-style:none;
+    position:relative;
+    width:700%; /* Number of panes * 100% */
+    overflow:hidden; /* This is used solely to clear floats, it does not add functionality. */
+        
+    -moz-animation:sponsor 50s infinite;
+    -webkit-animation:sponsor 50s infinite;
+    animation:sponsor 50s infinite;
+    
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.panest > li{
+    position:relative;
+    float:left;
+    width:14.286%; /* 100 / number of panes */
+}
+
+@keyframes sponsor{
+    0%        { left:0; }
+    7.692%    { left: 0;}
+    14%       { left: 0;}
+    15.384%   { left:-100%; }
+    22%       { left: -100%;}
+    23.076%   {left:-200%; }
+    29%       { left: -200%;}
+    30.768%   { left:-300%; }
+    37%       { left: -300%;}
+    38.460%   { left:-400%; }
+    45%       { left: -400%;}
+    46.152%   { left:-500%; }
+    52%       { left: -500%;}
+    53.844%   { left:-600%; }
+    60%       { left: -600%;}
+    61.536%   { left:-500%; }
+    68%       { left: -500%;}
+    69.228%   { left:-400%; }
+    75%       { left: -400%;}
+    76.920%   { left:-300%; }
+    83%       { left: -300%;}
+    84.612%   { left:-200%; }
+    90%       { left: -200%;}
+    92.304%   { left:-100%; }
+    99%       { left: -100%;}
+    100%      { left:0; }
+} 
+
+/* Dropdown Menu */
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a {
+	border: none;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+#cssmenu {
+	
+	
+}
+#cssmenu,
+#cssmenu > ul > li > ul > li a:hover {
+	
+}
+#cssmenu > ul {
+	list-style: inside none;
+	padding: 0;
+	margin: 0;
+}
+#cssmenu > ul > li {
+	list-style: inside none;
+	padding: 0;
+	margin: 0;
+	float: left;
+	display: block;
+	position: relative;
+    z-index: 9000;
+    width: 200px;
+    clear: both;
+}
+#cssmenu > ul > li > a {
+	outline: none;
+	display: block;
+	position: relative;
+	padding: 12px 20px;
+	text-align: center;
+	
+}
+#cssmenu > ul > li > a:hover {
+	
+}
+#cssmenu > ul > li:first-child > a {
+	
+}
+#cssmenu > ul > li > a:after {
+	content: '';
+	position: absolute;
+	
+	top: -1px;
+	bottom: -1px;
+	right: -2px;
+	z-index: 99;
+	border-color: #3c3c3c;  
+	
+}
+
+#cssmenu ul li.has-sub:hover > a:after {
+	top: 0;
+	bottom: 0;
+}
+#cssmenu > ul > li.has-sub > a:before {
+	content: '';
+	position: absolute;
+	top: 18px;
+	right: 6px;
+	border: 5px solid transparent;
+	border-top: 5px solid #ffffff;
+}
+#cssmenu > ul > li.has-sub:hover > a:before {
+	top: 19px;
+}
+#cssmenu ul li.has-sub:hover > a {
+	background: #3f3f3f;
+	border-color: #3f3f3f;
+	padding-bottom: 13px;
+	padding-top: 13px;
+	top: -1px;
+	z-index: 999;
+}
+#cssmenu ul li.has-sub:hover > ul,
+#cssmenu ul li.has-sub:hover > div {
+	display: block;
+}
+#cssmenu ul li.has-sub > a:hover {
+	
+	
+}
+#cssmenu ul li > ul,
+#cssmenu ul li > div {
+	display: none;
+	width: auto;
+	position: absolute;
+	top: 38px;
+	padding: 10px 0;
+	
+	
+	z-index: 999;
+}
+#cssmenu ul li > ul {
+	width: 200px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 33px;
+    left: 0px;
+}
+
+#cssmenu ul li > ul li {
+	display: block;
+	list-style: inside none;
+	padding: 0;
+	margin: 0;
+    float: left;
+    clear: both;
+    width: 200px;
+}
+
+#cssmenu ul li > ul li a {
+	outline: none;
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 8px 20px;
+}
+
+#cssmenu ul ul a:hover {
+	
+}
+#cssmenu > ul > li.has-sub > a:hover:before {
+	
+}
+
+/*Onderste rode gedeelte van een post */
+.extra {
+    background-color: #D11416;
+    border-radius: 0px 0px 18px 18px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-right: 15px;
+}
+
+small {
+    color:white;
+}
+
+#websiteInfo {
+    padding-left: 20px;
+}
+.right {
+    float: right;
+    padding-top: 1px;
+}
+
+.extra a:link, .extra a:visited {
+    color: white;
+}
+
+#menu-mobile #menu-mobile-menu-links {
+    display: none;
+}
+#menu-mobile:hover #menu-mobile-menu-links {
+    display: block;
+    width: 200px;
+    margin: auto;
+}
+
+.site-subnav ul{
+    list-style: none;
+    /*float: left; */
+}
+
+/* children links */
+.children-links {
+    margin-top: 10px;
+    margin-bottom: 45px;
+    font-size: 80%;
+}
+
+.children-links ul {
+    float: left;
+}
+
+.children-links li {
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.children-links .parent-link {
+    float: left;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #DDD;
+    font-size: 120%;
+    font-weight: bold; 
+}
+
+#positionfix-subnav {
+    margin-top: 0px;
+    padding-left: 0px;
+}
+
+.box-shadow-menu {
+  position: relative;
+  padding-left: 1.25em;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  width: 1em;
+  height: 0.15em;
+  background: white;
+  box-shadow: 
+    0 0.25em 0 0 white,
+    0 0.5em 0 0 white;
+}
+
+    #menu-mobile a:link,
+    #menu-mobile a:visited{
+    background-color: #E80C0C;
+    display: block;
+    padding: 10px 18px;
+    border: 1px solid #CE3033;
+    text-decoration: none;
+    color: white;
+    height: 23px;
+    width: auto;
+    margin-top: -1px;
+}
+    
+    #menu-mobile a:hover {
+    background-color: #D11416;
+    color: white;
+    border: 1px solid #D11416;
+    border-bottom: none;
+    border-top: none;
+    margin-top: 0px;
+} 
+li{
+    list-style-type: none;
+}
+#menu
+{
+    position: relative;
+    width: 200px;
+    font-size: 125%;
+    text-align: center;
+    margin: auto;
+}
+
+#menu a
+{
+    padding-left: 1.25em; /* 20px/16px */
+}
+#menu a:before 
+{
+    margin-left: 15px;
+    content: "";
+    position: absolute;
+    top: 30%;
+    left:0px;
+    width:.75em; /* 12px/16px */
+    height:.125em; /* 2px/16px */
+    border-top: .375em double white; /* 6px/16px */
+    border-bottom: .125em solid white; /* 2px / 16px */
+}
+.table-header {
+    background-color: #E80C0C;
+    border-radius: 18px 18px 0px 0px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 125%;
+    padding: 6px 0px 6px 4%;
+}
+.blank_row
+{
+    height: 10px !important; /* Overwrite any previous rules */
+    background-color: #FFFFFF;
+}
+tr:nth-child(even)
+{
+    background-color: #f2f2f2
+}
+
+@media screen and (min-width: 720px)
+{
+    #menu-mobile 
+    {
+    display: none;
+    }
+    
+}
+
+@media screen and (max-width: 720px)
+{
+    .primary-nav {
+        display: none;
+    }
+    .primary-mobile-nav {
+        display: block;
+    }
+    .social-buttons {
+        margin-right: 30px;
+    }
+    .site-header {
+        padding-left: 0px;
+        width: 100%;
+    }
+    .logo {
+        margin-left: 5%;
+    }
+}
+
+
+@media screen and (max-width: 875px)
+{
+    article.auto, .article.announcement, article.agenda, article.wedstrijd
+    {
+        width: 100%;
+    }
+
+    .right-column
+    {
+        max-width: none;
+        float: left;
+        width: 100%;
+    }
+}
+    
+@media screen and (min-width: 512px) and (max-width: 875px) {
+    .right-column-tablet {
+        width: 49%;
+        float: left;
+    }
+    article.agenda {
+        width: 49%;
+        float: right;
+    }
+}
+.testcase {
+    top: 10px;
+    z-index: 100;
+    position: absolute;
 }

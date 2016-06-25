@@ -14,10 +14,12 @@ get_header(); ?>
         </article>
     <?php 
     while(have_posts()) : the_post(); ?>
-        <article class="post">
-            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-            <small><?php the_time('F jS, Y'); ?></small>
-            <?php the_excerpt(); ?>
+        <article class="post content">
+            <!--div class="content"-->
+                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <small><?php the_time('F jS, Y'); ?></small>
+                <?php the_excerpt(); ?>
+            <!--/div-->
         </article>
     <?php endwhile; ?>
 <?php get_footer(); ?>
