@@ -174,7 +174,7 @@ $query = new WP_Query( array('category_name' => 'agenda', 'posts_per_page' => '2
     <?php
 wp_reset_postdata();
 ?>
-<article class="post">
+<article class="post announcement agenda" id="twitterfeed">
             <a class="twitter-timeline"  href="https://twitter.com/bvdyna" data-widget-id="353499231585193984">Tweets door @bvdyna</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         </article>  
