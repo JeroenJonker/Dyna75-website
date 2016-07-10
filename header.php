@@ -57,9 +57,8 @@ include("class.team.php");
                            
                         </a--> 
                         <li id="menu"><a href="#">Menu</a></li>
-                        
-                        <?php wp_nav_menu( array( 'theme_location' => 'primary mobile', 'menu_class' => 'nav-menu','container_id' => 'cssmenu','walker' => new CSS_Menu_Walker() ) ); ?>
-                    </div>
+                        </div>
+                        <?php wp_nav_menu( array( 'theme_location' => 'primary mobile', 'menu_class' => 'nav-menu','container_id' => 'cssmenu' ) ); ?>
 
                 </nav>
                 

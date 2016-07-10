@@ -137,6 +137,7 @@ wp_reset_postdata();
         </article>
     </div> <?php wp_reset_postdata(); ?>
 
+
 <?php
 /* Agenda */
 $bool = true;
@@ -181,11 +182,13 @@ wp_reset_postdata();
 </div> <?php
 
 /* de rest van de posts */
+$counter = 0;
 $query = new WP_Query( array('category_name' => 'Uncategorized', 'posts_per_page' => '5'));
 if( $query->have_posts()) : ?>
     <?php while($query->have_posts()) {
         $query->the_post(); ?>
-        <?php if(!in_category('hoofdnieuws') && !in_category('agenda') && !in_category('sponsoren')) : ?>
+        <?php if(!in_category('hoofdnieuws') && !in_category('agenda') && !in_category('sponsoren'))
+        { ?>
             <article class="auto post <?php if(has_post_thumbnail()) { ?> has-thumbnail <?php } ?>">
                 <div class="post-thumbnail">
                     <a href= "<?php the_permalink(); ?>"> <?php the_post_thumbnail('banner-image'); ?> </a>
@@ -203,11 +206,23 @@ if( $query->have_posts()) : ?>
                     </small>
                 </div>
             </article>
-        <?php endif; 
-} ?>
-    <?php else : 
-        echo '<p> No content </p>';
-    endif;
+        <?php $counter++; 
+        if($counter == 2)
+        {
+            $pizza = new WP_Query( array('category_name' => 'video', 'posts_per_page' => '3')); 
+            if ( $pizza->have_posts())
+            {
+                while ($pizza->have_posts()) 
+                {
+                    $pizza->the_post(); 
+                    the_content();
+                }
+            }
+        } ?>
+        <?php }; 
+} 
+endif;
+
 get_footer();
 ?>
 
