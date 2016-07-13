@@ -157,15 +157,23 @@ article h2 {
 }
 
 article#hoofdnieuws h2 {
+    position: absolute;
     font-size: 190%;
-    height: 310px;
+/*    height: 310px;*/
     color: white;
     text-shadow: 1.5px 1.5px 0.5px rgba(0, 0, 0, 0.5);
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 1%;
+    padding-right: 1%;
+    width: 98%;
     text-align: center;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -55%);
+    webkit-transform: translate(-50%, -55%);
+/*
     vertical-align: middle;
     display: table-cell;
+*/
 }
 
 article.announcement {
@@ -722,11 +730,7 @@ tr:nth-child(even)
     }
 }
 
-.testcase {
-    top: 10px;
-    z-index: 100;
-    position: absolute;
-}
+
 
 .site-nav {
     width: 100%;
@@ -752,4 +756,23 @@ tr:nth-child(even)
 
 #cssmenu > ul {
     margin-top: 0px;
+}
+
+.verzinmaarwat {
+    width: 70%;
+    background-color: #D11416;
+    margin-bottom: 21px;
+    box-shadow: 0px 0px 6px #888888;
+    -webkit-box-shadow: 0px 0px 6px #888888;
+    -moz-box-shadow: 0px 0px 6px #888888;
+    -o-box-shadow: 0px 0px 6px #888888;
+}
+.verzinmaarwat > p {
+    width: 49%;
+    padding-top: 5px;
+    display: inline-block;
+}
+
+.verzinmaarwat > p > iframe {
+    width: 100%;
 }

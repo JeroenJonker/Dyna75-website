@@ -14,13 +14,13 @@ if ( $query->have_posts()) { ?>
                     <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'hoofdnieuws-image' );?>
                     <div>
                     <a href="<?php the_permalink(); ?>">
+                    <h2> <?php the_title(); ?></h2>
 <!--<div id="post" class="first-article" style="background-image: url('<?php echo $thumb['0'];?>')">                -->
                     <img src="<?php echo $thumb['0']; ?>"/>
 
-                    <h2 class="testcase"><?php the_title(); ?></h2>
                     <!--?php the_content('Verder lezen &raquo;'); ?-->
 
-                    </div></a>
+                    </a></div>
                 </li>
             <?php }  ?>   
         </ul>
@@ -140,41 +140,55 @@ wp_reset_postdata();
 
 <?php
 /* Agenda */
-$bool = true;
-$query = new WP_Query( array('category_name' => 'agenda', 'posts_per_page' => '20')); ?>
+$posts = get_posts(array(
+    'category_name' => 'agenda',
+//	'post_type'	=> 'post',
+	'meta_key'	=> 'datum',
+	'orderby'	=> 'meta_value_num',
+	'order'		=> 'ASC'
+));
+
+$thisday = mysql2date("Ymd", $post->post_date_gmt); 
+$bool = true; ?>
 <article class="post announcement agenda">
     <h2> Agenda </h2>
-    <div class="content">
-        <?php
-    if ( $query->have_posts()) { 
-        while ($query->have_posts()) {
-            $query->the_post(); 
-                if(mysql2date("Ymd", $post->post_date_gmt) >= get_the_content())
-                {
-                    if ($bool)
-                    {
-                        $bool = false;
-                        echo '<ul class="agendaPunt">';
-                    }
-                    ?> <li> <?php the_title(); ?></li> <?php
-                }
-        }
-    } else { echo 'error! not enough agenda';} 
-            if (!$bool)
+    <div class="content"> <?php
+if( $posts ) {
+	
+	foreach( $posts as $post ) {
+		
+		setup_postdata( $post );
+
+		$enddate = get_field('datum', false, false);
+        if ($enddate >= $thisday)
+        {
+            if ($bool)
             {
-                echo '</ul>';
-            }?>
+                $bool = false;
+                echo '<ul class="agendaPunt">';
+            }
+            $enddate = new DateTime($enddate);
+
+            ?> <li> <?php echo $enddate->format('j M');?>: <?php the_title(); ?></li> <?php
+        }
+
+	}
+	wp_reset_postdata();
+} 
+    if (!$bool)
+    {
+        echo '</ul>';
+    }?>
     </div>
     <div class="extra">
         <small>
-            <?php echo date('j F, Y'); ?>
+            <?php echo date_i18n('j F Y', time()); ?>
             &nbsp;
         </small>
     </div>
 </article>
-    <?php
-wp_reset_postdata();
-?>
+
+<!--Twitterfeed-->
 <article class="post announcement agenda" id="twitterfeed">
             <a class="twitter-timeline"  href="https://twitter.com/bvdyna" data-widget-id="353499231585193984">Tweets door @bvdyna</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -209,14 +223,16 @@ if( $query->have_posts()) : ?>
         <?php $counter++; 
         if($counter == 2)
         {
-            $pizza = new WP_Query( array('category_name' => 'video', 'posts_per_page' => '3')); 
+            $pizza = new WP_Query( array('category_name' => 'video', 'posts_per_page' => '2')); 
             if ( $pizza->have_posts())
             {
+                ?><article class="verzinmaarwat"><?php
                 while ($pizza->have_posts()) 
                 {
                     $pizza->the_post(); 
                     the_content();
                 }
+                ?></article><?php
             }
         } ?>
         <?php }; 

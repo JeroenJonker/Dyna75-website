@@ -25,5 +25,7 @@
         <small>Made by J. Jonker, <?php bloginfo('name'); ?> -  &copy; <?php echo date('Y'); ?></small>
                 <?php wp_footer(); ?>
         </div>
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/javascript.js"></script>
     </body>
 </html>
