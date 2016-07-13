@@ -12,15 +12,15 @@ if ( $query->have_posts()) { ?>
             echo $counter; ?>
                 <li>
                     <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'hoofdnieuws-image' );?>
-                    <div>
                     <a href="<?php the_permalink(); ?>">
+                    <div>
                     <h2> <?php the_title(); ?></h2>
 <!--<div id="post" class="first-article" style="background-image: url('<?php echo $thumb['0'];?>')">                -->
                     <img src="<?php echo $thumb['0']; ?>"/>
 
                     <!--?php the_content('Verder lezen &raquo;'); ?-->
 
-                    </a></div>
+                    </div></a>
                 </li>
             <?php }  ?>   
         </ul>
